@@ -1,24 +1,28 @@
-import random
+import random 
+from histogram import histogram
 
-txt = open('txt.py','r')
-txt_lines = readlines(txt)
-txt_words = txt_lines.split()
-
+txt = [('cats', 3), ('dog', 4), ('rabbits', 2), ('turtles', 1)]
 
 
 
 
+def sample(histogram):
+   
+    tokens =  sum([count for word, count in histogram]) 
+    
+    dart = random.randint(1,tokens)
+    fence = 0
+
+    for word, count in histogram:
+        fence += count
+        if fence >= dart:
+         return word
+
+print(sample(txt)) 
+
+    
 
 
-def sort(txt):
 
-    count = 0
 
-    for i in range(len(txt)):
-        a = 0
-        for a in range(i):
-            if(txti] == txt[a]):
-                break
-            if (i == a + 1):
-                count += 1
-                print(txt[i], '=', round(((txt.count(txt[i])/count)*100), 2), '%')
+    
