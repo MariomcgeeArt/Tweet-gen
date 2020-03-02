@@ -1,4 +1,4 @@
-from random import randint
+import random
 
 class Dictogram:
 
@@ -40,11 +40,26 @@ class Dictogram:
 
     def unique_words(self):
         '''returns the number of unique words in the dictionary histogram'''
-        #TODO: use your unique words function as a starting point to complete this method
-        pass
+        total_count= 0
+        for words in self.dictionary_histogram:
+            if words in self.dictionary_histogram == 1:
+                total_count += 1
+        return total_count
+
+            
 
     def sample(self):
         '''Randomly samples from the dictionary histogram based on the frequency, returns a word'''
+        tokens =  sum([count for word, count in self.dictionary_histogram.items()]) 
+    
+        dart = random.randint(1,tokens)
+        fence = 0
+
+        for word, count in self.dictionary_histogram.items():
+            fence += count
+            if fence >= dart:
+             return word
+
 
         #TODO: use your sample function as a starting point to complete this method 
         pass
@@ -102,4 +117,4 @@ def print_dictogram_samples(dictogram):
     print(divider)
     print()
 
-print_dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
+print_dictogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish',])

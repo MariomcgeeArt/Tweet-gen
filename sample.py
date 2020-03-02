@@ -20,6 +20,10 @@ def sample(histogram):
 
 
 
+if __name__ == "__main__":
+    pass
+
+
     
 
 

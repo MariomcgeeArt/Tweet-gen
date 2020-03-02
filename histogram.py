@@ -17,8 +17,6 @@ def histogram(source_txt):
             word_histogram[word]= 1
         else: 
             word_histogram[word] = word_histogram[word] + 1 
-
-    #TODO: add code to increase the count in the histogram for the given word
   
     return(word_histogram)
 
@@ -43,5 +41,5 @@ if __name__ == "__main__":
     my_histogram= histogram("words.txt")
     print(my_histogram)
     print("0000000000000000")
-    print(frequency("words.txt",my_histogram))
+    print(frequency(,my_histogram))
     unique_words(my_histogram)

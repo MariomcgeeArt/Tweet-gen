@@ -14,9 +14,23 @@ class Listogram:
 
     def build_listogram(self): 
         '''Creates a histogram list of lists using the word_list property and returns it'''
+        
 
-        #TODO: use your listogram function as a starting point to complete this method
-        pass
+        list_histogram = []
+
+        for word in self.word_list:
+            index= self.get_index(word,list_histogram)
+            #if the word is not in the histogram, it's the first time we have seen the word
+            if type(index) == str:
+                list_histogram.append([word,1])
+            else:
+                list_histogram[index][1] = list_histogram[index][1] + 1
+    
+        return(list_histogram)
+
+
+   
+   
 
     def get_num_tokens(self):
         '''gets the number of tokens in the listogram'''
@@ -28,27 +42,51 @@ class Listogram:
 
     def get_index(self, word, list_histogram):
         '''searches in the list histogram parameter and returns the index of the inner list that contains the word if present'''
-        #TODO: use your get_index function as a starting point to complete this method
-        pass
+        index = 0
+        for innerlist in list_histogram: # for every list word in list histogram
+            #index = word.index(list_word) # created a new variable called index where the index of the list word is stored of the 
+            #return index
+            if word == innerlist[0]:
+                return index
+            index += 1 
+        return 'did not find it'
 
+      
     def frequency(self, word):
         '''returns the frequency or count of the given word in the list of lists histogram'''
-        #TODO: use your frequency and get_index function as a starting point to complete this method
-        #You will need to adapt it a little bit to work with listogram
-        pass
-        
+        for index in range(len(self.list_histogram)): # getting index from list histrogram
+            if self.list_histogram[index][0] == word: # if word in list histogram matches the word 
+                return self.list_histogram[index][1] # return the count of the word
+            return 0
+
+
+       
     def unique_words(self):
         '''returns the number of unique words in the list of lists histogram'''
-        #TODO: use your unique words function as a starting point to complete this method
-        #You will need to adapt it a little bit to work with listogram
-        pass
+        total_count= 0
+        for words in self.list_histogram:
+            if words in self.list_histogram == 1:
+                total_count += 1
+        return total_count
 
+
+    
 
     def sample(self):
         '''Randomly samples from the list of list histogram based on the frequency, returns a word'''
+      
+        
+        dart = randint(0,len(self.list_histogram) -1)
+        fence = 0
 
-        #TODO: use your sample function as a starting point to complete this method 
-        #You will need to adapt it a little bit to work with listogram
+        for word, count in self.list_histogram:
+            fence += count
+            if fence >= dart:
+             return word
+
+# am i passing in the same exact type of code because of the .items() which converst things to a dictionay?
+
+  
 
 def print_listogram(word_list):
     '''Creates a list based histogram (listogram) and then prints out its properties and samples from it'''
