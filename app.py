@@ -1,22 +1,27 @@
-from flask import Flask
-from histogram import histogram
+from flask import Flask 
+from histogram import histogram #imports histogram function from histogram file
 from sample import sample
-
 
 app = Flask(__name__)
 
-
-
-
-
 @app.route('/')
-def create_words():
-   # my_file= open("words.txt",'r')
-   # lines = my_file.readlines()
-   # print(lines)
-    my_histogram = histogram('words.txt')
+def generate_words():
+    #build a histogram
+    my_file = open("words.txt", "r")  # opens file and reads it 
+    lines = my_file.readlines() # makes a string of all lines in file and stores it in 'lines'
+    my_histogram = histogram(lines) 
 
+    ### generate a sentence 
+    sentence = " "
+    num_words = 10 
+    for i in range(num_words):
+        word = sample(my_histogram)
+        sentence += " " + word
+    return sentence
+
+    
     word = sample(my_histogram)
-    print(word)
     return word
 
+if __name__ == "__main__":
+    pass

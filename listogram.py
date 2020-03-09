@@ -74,8 +74,6 @@ class Listogram:
 
     def sample(self):
         '''Randomly samples from the list of list histogram based on the frequency, returns a word'''
-      
-        
         dart = randint(0,len(self.list_histogram) -1)
         fence = 0
 
